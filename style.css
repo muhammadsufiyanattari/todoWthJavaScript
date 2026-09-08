@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0px;
+}
+button{
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 10px!important;
+    font-weight: bold;
+}
+
+.container{
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 10px;
+    width: 50%;
+    
+}
+#todoForm{
+    box-sizing: border-box;
+    background-color: aliceblue;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+   gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+#submit{
+    background-color: rgb(87, 138, 11);
+    padding: 5px 0px;
+}
+#filterForm{
+    box-sizing: border-box;
+      background-color: aliceblue;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+   gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+#todoListContainer{
+    box-sizing: border-box;
+    background-color: antiquewhite;
+    width: 100%;
+   max-height: 200px;
+    padding: 10px;
+    overflow-y: scroll;
+
+
+    border-radius: 10px;
+}
+#todoUl{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: antiquewhite;
+}
+#taskLi{
+    box-sizing: border-box;
+    display: flex;
+    gap: 10px;
+    
+}
+#taskInput{
+    flex-grow: 2;
+}
+#singleItemDelete{
+    padding: 5px 10px ;
+    background-color: red;
+}
+#clearAllTasks {
+    box-sizing: border-box;
+    width: 100%;
+}
+#clearAllTasks button{
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
