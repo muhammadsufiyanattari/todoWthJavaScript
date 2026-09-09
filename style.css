@@ -19,7 +19,8 @@ button{
     align-items: center;
     height: 100vh;
     gap: 10px;
-    width: 50%;
+   max-width: 100%;
+   min-width: 50%;
     
 }
 #todoForm{
@@ -53,6 +54,7 @@ button{
    max-height: 200px;
     padding: 10px;
     overflow-y: scroll;
+    overflow-x: hidden;
 
 
     border-radius: 10px;
@@ -76,6 +78,14 @@ button{
 #singleItemDelete{
     padding: 5px 10px ;
     background-color: red;
+}
+#editInput{
+    padding: 5px 10px ;
+    background-color: blue;
+}
+#updateInput{
+    padding: 5px 10px ;
+    background-color: green;
 }
 #clearAllTasks {
     box-sizing: border-box;

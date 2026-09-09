@@ -10,7 +10,21 @@ console.log(todoInput.value);
 todoUl.innerHTML+=`<li id="taskLi">
                  <input id="taskInput" type="text" value=${todoInput.value} disabled />
                 <button id="singleItemDelete">Delete</button>
+                <button id="editInput">Edit</button>
+                <button id="updateInput">Update</button>
             </li>`;
+            const editInput=document.getElementById("editInput");
+            editInput.addEventListener("click", e=>{
+                e.preventDefault();
+                const taskInput=document.getElementById("taskInput");
+                taskInput.disabled=false;
+                taskInput.focus();
+                const updateInput=document.getElementById("updateInput");
+                updateInput.addEventListener("click", e=>{
+                    e.preventDefault();
+                    taskInput.disabled=true;
+                })
+            })
 todoInput.value=""
 
 })
