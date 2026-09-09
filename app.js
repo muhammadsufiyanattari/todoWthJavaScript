@@ -5,6 +5,10 @@ const todoUl=document.getElementById("todoUl");
 const clearAllBtn=document.getElementById("clearAll");
 todoForm.addEventListener("submit", e=>{
     e.preventDefault();
+    if(todoInput.value===""){
+        alert("Please enter a task");
+        return;
+    }
 todoInput.value
 console.log(todoInput.value);
 todoUl.innerHTML+=`<li id="taskLi">
@@ -30,6 +34,12 @@ todoInput.value=""
 })
 clearAllBtn.addEventListener("click", e=>{
     e.preventDefault();
+    if(todoUl.innerHTML===""){
+        alert("No tasks to clear");
+        return;
+    }
+        // ye confirm ke kam ata he ke sab delet karne se phele user se reconfirm kar len 
+    confirm("Are you sure you want to clear all tasks?")
     todoUl.innerHTML="";
 }
 )
