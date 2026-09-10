@@ -5,7 +5,7 @@ const todoUl = document.getElementById("todoUl");
 const clearAllBtn = document.getElementById("clearAll");
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (todoInput.value === "") {
+  if (!todoInput.value) {
     alert("Please enter a task");
     return;
   }
@@ -18,17 +18,29 @@ todoForm.addEventListener("submit", (e) => {
                 <button id="updateInput">Update</button>
             </li>`;
   const taskInput = document.getElementById("taskInput");
+  const singleItemDelete = document.getElementById("singleItemDelete");
   const editInput = document.getElementById("editInput");
   const updateInput = document.getElementById("updateInput");
+  todoUl.addEventListener("click", (e) => {
+          e.preventDefault();
+    if (e.target.id === "singleItemDelete") {
+            // console.log(e.target.parentElement);
 
-  editInput.addEventListener("click", (e) => {
-    e.preventDefault();
-    taskInput.disabled = false;
-    taskInput.focus();
-    updateInput.addEventListener("click", (e) => {
-      e.preventDefault();
-      taskInput.disabled = true;
-    });
+      e.target.parentElement.remove();
+      return;
+    }
+    if (e.target.id === "editInput") {
+      // console.log(e.target.parentElement.children[0]);
+      e.target.parentElement.children[0].disabled = false;
+
+      e.target.parentElement.children[0].focus();
+      return;
+    }
+    if (e.target.id === "updateInput") {
+      // console.log(e.target.parentElement.children[0]);
+      e.target.parentElement.children[0].disabled = true;
+      return;
+    }
   });
   todoInput.value = "";
 });
