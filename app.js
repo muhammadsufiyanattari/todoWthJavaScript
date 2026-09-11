@@ -16,7 +16,7 @@ todoForm.addEventListener("submit", (e) => {
     return;
   }
   todoInput.value;
-  console.log(todoInput.value);
+  // console.log(todoInput.value);
   todoUl.innerHTML += `<li id="taskLi">
                  <input id="taskInput" type="text" value="${todoInput.value}" disabled />
                 <button id="singleItemDelete">Delete</button>
@@ -61,25 +61,32 @@ clearAllBtn.addEventListener("click", (e) => {
   }
  
 });
-// filterForm.addEventListener("submit",(e)=>{
-//   e.preventDefault();
-//   // filterInput.value;
-//   const filterInput = filterInput.value.toLowerCase();
-//   const filterValue = todoInput.value.toLowerCase();
-// const merafilter=filterInput.value.filter(value=>  value=== filterValue);
-// console.log(merafilter);
+filterForm.addEventListener("submit",(e)=>{
+  e.preventDefault();
+// console.log( filterInput.value);
+//  console.log(todoUl)
+const filterValue=filterInput.value.toLowerCase();
+const taskArr=[]
+const allElements=todoUl.querySelectorAll("li");
+allElements.forEach((li)=>{
+  const taskValue=li.querySelector("input").value.toLowerCase();
+  // console.log(taskValue);
+  const OutputFilterValue=li.querySelector("input").value;
+  if (taskValue.includes(filterValue)) {
+    // console.log("hello sufiyan");
 
-//   console.log(filterInput.value.toLowerCase());
-
-//     todoUl.innerHTML += `<li id="taskLi">
-//                  <input id="taskInput" type="text" value="${todoInput.value}" disabled />
-//                 <button id="singleItemDelete">Delete</button>
-//                 <button id="editInput">Edit</button>
-//                 <button id="updateInput">Update</button>
-//             </li>`;
-  
- 
-//   todoInput.value = "";
-  
-
-// })
+    todoUl.innerHTML = `<li id="taskLi">
+                 <input id="taskInput" type="text" value="${OutputFilterValue}" disabled />
+                <button id="singleItemDelete">Delete</button>
+                <button id="editInput">Edit</button>
+                <button id="updateInput">Update</button>
+            </li>`;
+            filterInput.value="";
+            return;
+  }
+  else{
+    // alert("No task found");
+    // return;
+  }
+})
+})
