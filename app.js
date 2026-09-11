@@ -3,25 +3,31 @@ const todoInput = document.getElementById("todoInput");
 const submit = document.getElementById("submit");
 const todoUl = document.getElementById("todoUl");
 const clearAllBtn = document.getElementById("clearAll");
+const taskInput = document.getElementById("taskInput");
+  const singleItemDelete = document.getElementById("singleItemDelete");
+  const editInput = document.getElementById("editInput");
+  const updateInput = document.getElementById("updateInput");
+  const filterForm=document.getElementById("filterForm");
+  const filterInput=document.getElementById("filterInput");
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!todoInput.value) {
-    alert("Please enter a task");
+    alert("Please add  first task");
     return;
   }
   todoInput.value;
   console.log(todoInput.value);
   todoUl.innerHTML += `<li id="taskLi">
-                 <input id="taskInput" type="text" value=${todoInput.value} disabled />
+                 <input id="taskInput" type="text" value="${todoInput.value}" disabled />
                 <button id="singleItemDelete">Delete</button>
                 <button id="editInput">Edit</button>
                 <button id="updateInput">Update</button>
             </li>`;
-  const taskInput = document.getElementById("taskInput");
-  const singleItemDelete = document.getElementById("singleItemDelete");
-  const editInput = document.getElementById("editInput");
-  const updateInput = document.getElementById("updateInput");
-  todoUl.addEventListener("click", (e) => {
+  
+ 
+  todoInput.value = "";
+});
+ todoUl.addEventListener("click", (e) => {
           e.preventDefault();
     if (e.target.id === "singleItemDelete") {
             // console.log(e.target.parentElement);
@@ -42,8 +48,6 @@ todoForm.addEventListener("submit", (e) => {
       return;
     }
   });
-  todoInput.value = "";
-});
 clearAllBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (todoUl.innerHTML === "") {
@@ -51,6 +55,31 @@ clearAllBtn.addEventListener("click", (e) => {
     return;
   }
   // ye confirm ke kam ata he ke sab delet karne se phele user se reconfirm kar len
-  confirm("Are you sure you want to clear all tasks?");
-  todoUl.innerHTML = "";
+  if (confirm("Are you sure you want to clear all tasks?")) {
+     todoUl.innerHTML = "";
+    return;
+  }
+ 
 });
+// filterForm.addEventListener("submit",(e)=>{
+//   e.preventDefault();
+//   // filterInput.value;
+//   const filterInput = filterInput.value.toLowerCase();
+//   const filterValue = todoInput.value.toLowerCase();
+// const merafilter=filterInput.value.filter(value=>  value=== filterValue);
+// console.log(merafilter);
+
+//   console.log(filterInput.value.toLowerCase());
+
+//     todoUl.innerHTML += `<li id="taskLi">
+//                  <input id="taskInput" type="text" value="${todoInput.value}" disabled />
+//                 <button id="singleItemDelete">Delete</button>
+//                 <button id="editInput">Edit</button>
+//                 <button id="updateInput">Update</button>
+//             </li>`;
+  
+ 
+//   todoInput.value = "";
+  
+
+// })
