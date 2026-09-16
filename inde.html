@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>TODO</h1>
+      <h1 class="heading">TODO</h1>
       <form id="todoForm" >
         <!-- Hum requried bhi laga sakhte hen ta ke empty submit na ho -->
         <input
@@ -19,6 +19,7 @@
         />
         <button id="submit">Add Task</button>
       </form>
+      <h3 id="taskNotFound" style="display: none;">Task is not Found</h3>
       <form id="filterForm" action="">
         Search:
        <input type="search" placeholder="Filter tasks" id="filterInput" />
@@ -37,7 +38,7 @@
       </div>
       
       <div id="clearAllTasks">
-        <button id="clearAll">Clear All Tasks</button>
+        <button id="clearAll">Clear All </button>
       </div>
     </div>
     <script src="app.js"></script>

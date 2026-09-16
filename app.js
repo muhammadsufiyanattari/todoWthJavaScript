@@ -9,7 +9,16 @@ const taskInput = document.getElementById("taskInput");
   const updateInput = document.getElementById("updateInput");
   const filterForm=document.getElementById("filterForm");
   const filterInput=document.getElementById("filterInput");
-todoForm.addEventListener("submit", (e) => {
+  const taskNotFound=document.getElementById("taskNotFound")
+const genrateHtml=(e)=>{
+e.innerHTML += `<li id="taskLi">
+                 <input id="taskInput" type="text" value="${todoInput.value}" disabled />
+                <button id="singleItemDelete">Delete</button>
+                <button id="editInput">Edit</button>
+                <button id="updateInput">Update</button>
+            </li>`;
+}
+  todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!todoInput.value) {
     alert("Please add  first task");
@@ -17,12 +26,7 @@ todoForm.addEventListener("submit", (e) => {
   }
   todoInput.value;
   // console.log(todoInput.value);
-  todoUl.innerHTML += `<li id="taskLi">
-                 <input id="taskInput" type="text" value="${todoInput.value}" disabled />
-                <button id="singleItemDelete">Delete</button>
-                <button id="editInput">Edit</button>
-                <button id="updateInput">Update</button>
-            </li>`;
+  genrateHtml(todoUl)
   
  
   todoInput.value = "";
@@ -31,12 +35,13 @@ todoForm.addEventListener("submit", (e) => {
           e.preventDefault();
     if (e.target.id === "singleItemDelete") {
             // console.log(e.target.parentElement);
-
+console.log(e);
       e.target.parentElement.remove();
       return;
     }
     if (e.target.id === "editInput") {
       // console.log(e.target.parentElement.children[0]);
+    
       e.target.parentElement.children[0].disabled = false;
 
       e.target.parentElement.children[0].focus();
@@ -47,6 +52,7 @@ todoForm.addEventListener("submit", (e) => {
       e.target.parentElement.children[0].disabled = true;
       return;
     }
+    
   });
 clearAllBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -61,7 +67,7 @@ clearAllBtn.addEventListener("click", (e) => {
   }
  
 });
-filterForm.addEventListener("submit",(e)=>{
+/*filterForm.addEventListener("submit",(e)=>{
   e.preventDefault();
 // console.log( filterInput.value);
 //  console.log(todoUl)
@@ -76,7 +82,7 @@ allElements.forEach((li)=>{
     // console.log("hello sufiyan");
 
     todoUl.innerHTML = `<li id="taskLi">
-                 <input id="taskInput" type="text" value="${OutputFilterValue}" disabled />
+                 <input class="filterOutPut" id="taskInput" type="text" value="${OutputFilterValue}" disabled />
                 <button id="singleItemDelete">Delete</button>
                 <button id="editInput">Edit</button>
                 <button id="updateInput">Update</button>
@@ -89,4 +95,27 @@ allElements.forEach((li)=>{
     // return;
   }
 })
+})*/
+filterForm.addEventListener("keyup", (e) => {
+  e.preventDefault();
+
+  console.log(e.target.value);
+  const searchValue=e.target.value.toLowerCase()
+  const todoArr=todoUl.querySelectorAll("li")
+   
+  todoArr.forEach(single => {
+   
+    console.log(single.children[0].value);
+    const singleValue=single.children[0].value.trim().toLowerCase()
+    if (singleValue.includes(searchValue)) {
+      console.log("hello")
+                  single.style.display="flex";
+
+    }
+    else{
+            single.style.display="none";
+
+    }
+  });
+ 
 })

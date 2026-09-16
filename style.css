@@ -1,13 +1,35 @@
 *{
     margin: 0;
     padding: 0px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 button{
     cursor: pointer;
     color: white;
     border: none;
+    font-weight: bold;
+    padding: 8px !important;
     border-radius: 10px!important;
     font-weight: bold;
+    width: 100px;
+}
+input{
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    
+}
+input:focus{
+    /* border: 0px 2px 0px 0px !important; */
+outline: none;
+
+    border-bottom: 2px solid rgb(9, 144, 197);
+    border-right: 2px solid rgb(9, 144, 197);
+}
+input::placeholder{
+    padding-left: 10px;
 }
 
 .container{
@@ -19,22 +41,30 @@ button{
     align-items: center;
     height: 100vh;
     gap: 10px;
-   max-width: 100%;
-   min-width: 50%;
+   width: 50%;
     
+}
+.heading{
+    background-color: aliceblue;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
 }
 #todoForm{
     box-sizing: border-box;
     background-color: aliceblue;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
    gap: 10px;
     padding: 10px;
     border-radius: 10px;
 }
+#todoForm input{
+    flex-grow: 1;
+}
 #submit{
-    background-color: rgb(87, 138, 11);
+    background-color: rgb(9, 144, 197);
     padding: 5px 0px;
 }
 #filterForm{
@@ -51,9 +81,10 @@ button{
     box-sizing: border-box;
     background-color: antiquewhite;
     width: 100%;
-   max-height: 200px;
+   max-height: 150px;
     padding: 10px;
     overflow-y: scroll;
+    scroll-behavior: smooth;
     overflow-x: hidden;
 
 
@@ -73,7 +104,7 @@ button{
     
 }
 #taskInput{
-    flex-grow: 2;
+    flex-grow: 1;
 }
 #singleItemDelete{
     padding: 5px 10px ;
@@ -81,21 +112,29 @@ button{
 }
 #editInput{
     padding: 5px 10px ;
-    background-color: blue;
+    background-color: rgb(9, 144, 197);
 }
+
 #updateInput{
     padding: 5px 10px ;
-    background-color: green;
+    background-color: rgb(29, 188, 29);
 }
 #clearAllTasks {
     box-sizing: border-box;
     width: 100%;
 }
 #clearAllTasks button{
-    width: 100%;
+    width: 30%;
     padding: 5px;
     border-radius: 10px;
     background-color: red;
     color: white;
     font-weight: bold;
+}
+
+@media screen and (max-width:900px) {
+    .container{
+        width: 100%;
+        margin: auto 20px;
+    }
 }
