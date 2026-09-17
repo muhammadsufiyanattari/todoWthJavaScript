@@ -4,56 +4,75 @@ const submit = document.getElementById("submit");
 const todoUl = document.getElementById("todoUl");
 const clearAllBtn = document.getElementById("clearAll");
 const taskInput = document.getElementById("taskInput");
-  const singleItemDelete = document.getElementById("singleItemDelete");
-  const editInput = document.getElementById("editInput");
-  const updateInput = document.getElementById("updateInput");
-  const filterForm=document.getElementById("filterForm");
-  const filterInput=document.getElementById("filterInput");
-  const taskNotFound=document.getElementById("taskNotFound")
-const genrateHtml=(e)=>{
-e.innerHTML += `<li id="taskLi">
-                 <input id="taskInput" type="text" value="${todoInput.value}" disabled />
+const singleItemDelete = document.getElementById("singleItemDelete");
+const editInput = document.getElementById("editInput");
+const updateInput = document.getElementById("updateInput");
+const filterMainDive = document.getElementById("filterMainDive");
+const filterInput = document.getElementById("filterInput");
+const taskNotFound = document.getElementById("taskNotFound");
+const genrateHtml = (e) => {
+  todoUl.innerHTML += `<li id="taskLi">
+                 <input id="taskInput" type="text" value="${e}" disabled />
                 <button id="singleItemDelete">Delete</button>
                 <button id="editInput">Edit</button>
                 <button id="updateInput">Update</button>
             </li>`;
-}
-  todoForm.addEventListener("submit", (e) => {
+};
+const saveTaskInlocalStorge = () => {
+  const addInArr = [];
+  const allTask = todoUl.querySelectorAll("li");
+  allTask.forEach((li) => {
+    addInArr.push(li.children[0].value);
+    // console.log(addInArr);
+
+    localStorage.setItem("TaskArr", JSON.stringify(addInArr));
+  });
+};
+
+
+
+todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
   if (!todoInput.value) {
     alert("Please add  first task");
     return;
   }
-  todoInput.value;
+  // todoInput.value;
   // console.log(todoInput.value);
-  genrateHtml(todoUl)
-  
- 
-  todoInput.value = "";
-});
- todoUl.addEventListener("click", (e) => {
-          e.preventDefault();
-    if (e.target.id === "singleItemDelete") {
-            // console.log(e.target.parentElement);
-console.log(e);
-      e.target.parentElement.remove();
-      return;
-    }
-    if (e.target.id === "editInput") {
-      // console.log(e.target.parentElement.children[0]);
-    
-      e.target.parentElement.children[0].disabled = false;
+  genrateHtml(todoInput.value);
 
-      e.target.parentElement.children[0].focus();
-      return;
-    }
-    if (e.target.id === "updateInput") {
-      // console.log(e.target.parentElement.children[0]);
-      e.target.parentElement.children[0].disabled = true;
-      return;
-    }
-    
-  });
+  todoInput.value = "";
+  saveTaskInlocalStorge();
+});
+todoUl.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.id === "singleItemDelete") {
+    // console.log(e.target.parentElement);
+    console.log(e);
+    e.target.parentElement.remove();
+      saveTaskInlocalStorge();
+
+    return;
+  }
+  if (e.target.id === "editInput") {
+    // console.log(e.target.parentElement.children[0]);
+
+    e.target.parentElement.children[0].disabled = false;
+
+    e.target.parentElement.children[0].focus();
+      saveTaskInlocalStorge();
+
+    return;
+  }
+  if (e.target.id === "updateInput") {
+    // console.log(e.target.parentElement.children[0]);
+    e.target.parentElement.children[0].disabled = true;
+      saveTaskInlocalStorge();
+
+    return;
+  }
+});
 clearAllBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (todoUl.innerHTML === "") {
@@ -62,12 +81,14 @@ clearAllBtn.addEventListener("click", (e) => {
   }
   // ye confirm ke kam ata he ke sab delet karne se phele user se reconfirm kar len
   if (confirm("Are you sure you want to clear all tasks?")) {
-     todoUl.innerHTML = "";
+    todoUl.innerHTML = "";
+    localStorage.removeItem("TaskArr");
+      saveTaskInlocalStorge();
+
     return;
   }
- 
 });
-/*filterForm.addEventListener("submit",(e)=>{
+/*filterMainDive.addEventListener("submit",(e)=>{
   e.preventDefault();
 // console.log( filterInput.value);
 //  console.log(todoUl)
@@ -96,26 +117,28 @@ allElements.forEach((li)=>{
   }
 })
 })*/
-filterForm.addEventListener("keyup", (e) => {
+filterMainDive.addEventListener("keyup", (e) => {
   e.preventDefault();
 
   console.log(e.target.value);
-  const searchValue=e.target.value.toLowerCase()
-  const todoArr=todoUl.querySelectorAll("li")
-   
-  todoArr.forEach(single => {
-   
+  const searchValue = e.target.value.toLowerCase();
+  const todoArr = todoUl.querySelectorAll("li");
+
+  todoArr.forEach((single) => {
     console.log(single.children[0].value);
-    const singleValue=single.children[0].value.trim().toLowerCase()
+    const singleValue = single.children[0].value.trim().toLowerCase();
     if (singleValue.includes(searchValue)) {
-      console.log("hello")
-                  single.style.display="flex";
-
-    }
-    else{
-            single.style.display="none";
-
+      console.log("hello");
+      single.style.display = "flex";
+    } else {
+      single.style.display = "none";
     }
   });
- 
-})
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const getItem = JSON.parse(localStorage.getItem("TaskArr"));
+  console.log(getItem);
+  getItem.forEach((get) => {
+    genrateHtml(get);
+  });
+});

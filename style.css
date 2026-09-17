@@ -67,7 +67,7 @@ input::placeholder{
     background-color: rgb(9, 144, 197);
     padding: 5px 0px;
 }
-#filterForm{
+#filterMainDive{
     box-sizing: border-box;
       background-color: aliceblue;
     width: 100%;
@@ -109,15 +109,16 @@ input::placeholder{
 #singleItemDelete{
     padding: 5px 10px ;
     background-color: red;
+    
 }
 #editInput{
     padding: 5px 10px ;
-    background-color: rgb(9, 144, 197);
+    background-color: #0990c5;
 }
 
 #updateInput{
     padding: 5px 10px ;
-    background-color: rgb(29, 188, 29);
+    background-color: #1dbc1d;
 }
 #clearAllTasks {
     box-sizing: border-box;
@@ -134,7 +135,11 @@ input::placeholder{
 
 @media screen and (max-width:900px) {
     .container{
-        width: 100%;
-        margin: auto 20px;
+        width: 90%;
+
+        /* margin: auto 20px; */
     }
+}
+@media screen and (max-width:500px){
+    /* #taskLi{} */
 }
