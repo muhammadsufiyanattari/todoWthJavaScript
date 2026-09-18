@@ -13,9 +13,9 @@ const taskNotFound = document.getElementById("taskNotFound");
 const genrateHtml = (e) => {
   todoUl.innerHTML += `<li id="taskLi">
                  <input id="taskInput" type="text" value="${e}" disabled />
-                <button id="singleItemDelete">Delete</button>
+              <div id="allBtnLi">  <button id="singleItemDelete">Delete</button>
                 <button id="editInput">Edit</button>
-                <button id="updateInput">Update</button>
+                <button id="updateInput">Update</button></div>
             </li>`;
 };
 const saveTaskInlocalStorge = () => {
@@ -48,17 +48,18 @@ todoForm.addEventListener("submit", (e) => {
 todoUl.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.id === "singleItemDelete") {
-    // console.log(e.target.parentElement);
+    // console.log(e.target.parentElement..parentElement);
     console.log(e);
-    e.target.parentElement.remove();
+    e.target.parentElement.parentElement.remove();
       saveTaskInlocalStorge();
 
     return;
   }
   if (e.target.id === "editInput") {
     // console.log(e.target.parentElement.children[0]);
+// console.log(e.target.parentElement.parentElement);
 
-    e.target.parentElement.children[0].disabled = false;
+    e.target.parentElement.parentElement.children[0].disabled = false;
 
     e.target.parentElement.children[0].focus();
       saveTaskInlocalStorge();
@@ -66,8 +67,8 @@ todoUl.addEventListener("click", (e) => {
     return;
   }
   if (e.target.id === "updateInput") {
-    // console.log(e.target.parentElement.children[0]);
-    e.target.parentElement.children[0].disabled = true;
+    // console.log(e.target.parentElement.parentElement.children[0]);
+    e.target.parentElement.parentElement.children[0].disabled = true;
       saveTaskInlocalStorge();
 
     return;
