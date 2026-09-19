@@ -1,167 +1,200 @@
-*{
-    margin: 0;
-    padding: 0px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-button{
-    cursor: pointer;
-    color: white;
-    border: none;
-    font-weight: bold;
-    padding: 10px 0px !important;
-    border-radius: 10px!important;
-    font-weight: bold;
-    width: 100px;
-}
-input{
-    box-sizing: border-box;
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    box-sizing: border-box;
-    
-}
-input:focus{
-    /* border: 0px 2px 0px 0px !important; */
-outline: none;
-
-    border-bottom: 2px solid rgb(9, 144, 197);
-    border-right: 2px solid rgb(9, 144, 197);
-}
-input::placeholder{
-    padding-left: 10px;
+* {
+  margin: 0;
+  padding: 0px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.container{
-    box-sizing: border-box;
-    margin: 0 auto;
-    display: flex;
+button {
+  cursor: pointer;
+  color: white;
+  border: none;
+  font-weight: bold;
+  padding: 10px 0px !important;
+  border-radius: 10px !important;
+  font-weight: bold;
+  width: 100px;
+}
+input {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  /* border: 0px 2px 0px 0px !important; */
+  outline: none;
+
+  border-bottom: 2px solid rgb(9, 144, 197);
+  border-right: 2px solid rgb(9, 144, 197);
+}
+input::placeholder {
+  padding-left: 10px;
+}
+
+.container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 10px;
+  width: 50%;
+}
+.heading {
+  background-color: aliceblue;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+}
+#todoForm {
+  box-sizing: border-box;
+  background-color: aliceblue;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+#todoForm input {
+  flex-grow: 1;
+}
+#submit {
+  background-color: rgb(9, 144, 197);
+  padding: 5px 0px;
+}
+#filterMainDive {
+  box-sizing: border-box;
+  background-color: aliceblue;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+
+  border-radius: 10px;
+
+}
+#filterMainDive label{
+  flex-grow: 1;
+  margin-bottom: 20px !important;
+  /* width: 100%; */
+}
+#filterMainDive input{
+  width: 100%;
+  flex-grow: 3;
+}
+#todoListContainer {
+  box-sizing: border-box;
+  background-color: antiquewhite;
+  width: 100%;
+  max-height: 150px;
+  padding: 10px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+#todoListContainer::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+#todoListContainer::-webkit-scrollbar-track {
+  background:aliceblue ;
+  /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+}
+ 
+#todoListContainer::-webkit-scrollbar-thumb {
+  background: rgb(9, 144, 197);
+  border-radius: 20px;
+  /* border: 3px solid blue; */
+}
+
+#todoUl {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: antiquewhite;
+}
+#taskLi {
+  box-sizing: border-box;
+  display: flex;
+  gap: 10px;
+}
+#taskLi input{
+background-color: white;
+}
+#allBtnLi {
+  display: flex;
+  gap: 5px;
+}
+#taskInput {
+  flex-grow: 1;
+  background-color: white;
+}
+.singleItemDelete {
+  padding: 5px 10px;
+  background-color: red;
+}
+.editInput {
+  padding: 5px 10px;
+  background-color: #0990c5;
+}
+
+.updateInput {
+  padding: 5px 10px;
+  background-color: #1dbc1d;
+}
+#clearAllTasks {
+  box-sizing: border-box;
+  width: 100%;
+}
+#clearAllTasks button {
+  width: 30%;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    width: 90%;
+
+    /* margin: auto 20px; */
+  }
+}
+@media screen and (max-width: 700px) {
+  #todoForm {
+    flex-direction: column;
+    width: 100%;
+  }
+  #todoForm input,
+  button {
+    width: 100%;
+  }
+  #taskLi {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    gap: 10px;
-   width: 50%;
-    
-}
-.heading{
-    background-color: aliceblue;
+  }
+  #taskLi input {
     width: 100%;
-    text-align: center;
-    border-radius: 10px;
-}
-#todoForm{
-    box-sizing: border-box;
-    background-color: aliceblue;
+  }
+  #allBtnLi {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-   gap: 10px;
-    padding: 10px;
-    border-radius: 10px;
-}
-#todoForm input{
-    flex-grow: 1;
-}
-#submit{
-    background-color: rgb(9, 144, 197);
-    padding: 5px 0px;
-}
-#filterMainDive{
-    box-sizing: border-box;
-      background-color: aliceblue;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-   gap: 5px;
-    padding: 10px;
-    border-radius: 10px;
-}
-#todoListContainer{
-    box-sizing: border-box;
-    background-color: antiquewhite;
-    width: 100%;
-   max-height: 150px;
-    padding: 10px;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+    justify-content: space-around;
+  }
 
-
-    border-radius: 10px;
-}
-#todoUl{
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: antiquewhite;
-}
-#taskLi{
-    box-sizing: border-box;
-    display: flex;
-    gap: 10px;
-    
-}
-#allBtnLi{
-    display: flex;
-    gap: 5px;
-}
-#taskInput{
-    flex-grow: 1;
-}
-#singleItemDelete{
-    padding: 5px 10px ;
-    background-color: red;
-    
-}
-#editInput{
-    padding: 5px 10px ;
-    background-color: #0990c5;
-}
-
-#updateInput{
-    padding: 5px 10px ;
-    background-color: #1dbc1d;
-}
-#clearAllTasks {
-    box-sizing: border-box;
+  #clearAllTasks button {
     width: 100%;
-}
-#clearAllTasks button{
-    width: 30%;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: red;
-    color: white;
-    font-weight: bold;
-}
-
-@media screen and (max-width:900px) {
-    .container{
-        width: 90%;
-
-        /* margin: auto 20px; */
-    }
-}
-@media screen and (max-width:600px){
-   #todoForm{
-    flex-direction: column;
-    width: 100%;
-   }
-   #todoForm input,button{
+  }
+  #filterMainDive input{
 width: 100%;
-   }
-    #taskLi{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    #taskLi input{
-width: 100%;
-    }
-    #allBtnLi{
-        width: 100%;
-        justify-content: space-around;
-    }
+  }
 }
